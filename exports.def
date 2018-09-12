@@ -1,0 +1,4 @@
+LIBRARY	"NoQuitPrompt"
+EXPORTS
+SKSEPlugin_Query
+SKSEPlugin_Load
