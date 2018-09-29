@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9A7D1F2B-5945-4CAF-8436-375D7F9FC025}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>StayAtSystemPageSE</RootNamespace>
+    <RootNamespace>NoQuitPrompt</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
