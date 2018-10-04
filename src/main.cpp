@@ -7,8 +7,8 @@
 IDebugLog   gLog;
 PluginHandle    g_pluginHandle = kPluginHandle_Invalid;
 
-const uintptr_t kQuitPromptEnchantingAddr = RelocationManager::s_baseAddr + 0x0086F0E4;  // 1_5_50
-const uintptr_t kQuitPromptAlchemyAddr = RelocationManager::s_baseAddr + 0x0086EED2;  // 1_5_50
+const uintptr_t kQuitPromptEnchantingAddr = RelocationManager::s_baseAddr + 0x0086F0E4;  // 1_5_53
+const uintptr_t kQuitPromptAlchemyAddr = RelocationManager::s_baseAddr + 0x0086EED2;  // 1_5_53
 
 void ApplyPatch(uintptr_t base, UInt8 * buf, size_t len)
 {
@@ -53,7 +53,7 @@ extern "C"
 			return false;
 		}
 
-		if (skse->runtimeVersion != RUNTIME_VERSION_1_5_50) {
+		if (skse->runtimeVersion != RUNTIME_VERSION_1_5_53) {
 			_MESSAGE("This plugin is not compatible with this versin of game.");
 			return false;
 		}
