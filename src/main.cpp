@@ -3,6 +3,7 @@
 #include "skse64_common/SafeWrite.h"
 #include "skse64_common/skse_version.h"
 #include <shlobj.h>
+#include "version.h"
 
 IDebugLog   gLog;
 PluginHandle    g_pluginHandle = kPluginHandle_Invalid;
@@ -42,8 +43,10 @@ extern "C"
 
 		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\NoQuitPrompt.log");
 
+		_MESSAGE("NoQuitPrompt v%s", NOQUITPROMPT_VERSION_VERSTRING);
+
 		info->infoVersion = PluginInfo::kInfoVersion;
-		info->name = "NoQuitPrompt plugin";
+		info->name = "NoQuitPrompt";
 		info->version = 2;
 
 		g_pluginHandle = skse->GetPluginHandle();
@@ -53,7 +56,7 @@ extern "C"
 			return false;
 		}
 
-		if (skse->runtimeVersion != RUNTIME_VERSION_1_5_53) {
+		if (skse->runtimeVersion != RUNTIME_VERSION_1_5_62) {
 			_MESSAGE("This plugin is not compatible with this versin of game.");
 			return false;
 		}
