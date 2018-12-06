@@ -7,8 +7,8 @@
 IDebugLog   gLog;
 PluginHandle    g_pluginHandle = kPluginHandle_Invalid;
 
-const uintptr_t kQuitPromptEnchantingAddr = RelocationManager::s_baseAddr + 0x0086F0E4;  // 1_5_53
-const uintptr_t kQuitPromptAlchemyAddr = RelocationManager::s_baseAddr + 0x0086EED2;  // 1_5_53
+const uintptr_t kQuitPromptEnchantingAddr = RelocationManager::s_baseAddr + 0x0086F0E4;  // 1_5_62
+const uintptr_t kQuitPromptAlchemyAddr = RelocationManager::s_baseAddr + 0x0086EED2;  // 1_5_62
 
 void ApplyPatch(uintptr_t base, UInt8 * buf, size_t len)
 {
