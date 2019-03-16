@@ -5,11 +5,13 @@
 #include <shlobj.h>
 #include "version.h"
 
-IDebugLog   gLog;
-PluginHandle    g_pluginHandle = kPluginHandle_Invalid;
+IDebugLog		gLog;
+PluginHandle	g_pluginHandle = kPluginHandle_Invalid;
 
-const uintptr_t kQuitPromptEnchantingAddr = RelocationManager::s_baseAddr + 0x0086F0E4;  // 1_5_62
-const uintptr_t kQuitPromptAlchemyAddr = RelocationManager::s_baseAddr + 0x0086EED2;  // 1_5_62
+// 40 57 48 83 EC 30 48 C7 44 24 20 FE FF FF FF 48 89 5C 24 48 48 89 6C 24 50 48 89 74 24 58 48 8B F9 0F B6 81 1D 02 00 00
+const uintptr_t kQuitPromptEnchantingAddr = RelocationManager::s_baseAddr + 0x0086F0E4 + 0x74;  // 1_5_62
+// 48 8B C4 55 56 57 48 83 EC 60 48 C7 40 C8 FE FF FF FF 48 89 58 08
+const uintptr_t kQuitPromptAlchemyAddr = RelocationManager::s_baseAddr + 0x0086EED2 + 0x132;  // 1_5_62
 
 void ApplyPatch(uintptr_t base, UInt8 * buf, size_t len)
 {
@@ -37,10 +39,8 @@ void GameplayPatches(void)
 
 extern "C"
 {
-
 	bool SKSEPlugin_Query(const SKSEInterface * skse, PluginInfo * info)
 	{
-
 		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\NoQuitPrompt.log");
 
 		_MESSAGE("NoQuitPrompt v%s", NOQUITPROMPT_VERSION_VERSTRING);
@@ -56,7 +56,7 @@ extern "C"
 			return false;
 		}
 
-		if (skse->runtimeVersion != RUNTIME_VERSION_1_5_62) {
+		if (skse->runtimeVersion != RUNTIME_VERSION_1_5_73) {
 			_MESSAGE("This plugin is not compatible with this versin of game.");
 			return false;
 		}
@@ -72,5 +72,4 @@ extern "C"
 
 		return true;
 	}
-
 }
